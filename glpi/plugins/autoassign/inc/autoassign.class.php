@@ -9,6 +9,31 @@ class PluginAutoassignRuleShowAllCollection extends RuleCollection
     public $menu_type   = 'plugins';
     public $menu_option = 'autoassign';
 
+    private function showCreateRuleButton($target)
+    {
+        global $CFG_GLPI;
+
+        if (!static::canCreate()) {
+            return;
+        }
+
+        $back = $_SERVER['REQUEST_URI'] ?? $target;
+
+        $params = [
+            'sub_type' => $this->getRuleClassName(),
+            'back'     => $back,
+        ];
+
+        $query = Toolbox::append_params($params, '&');
+        $url   = $CFG_GLPI['root_doc'] . '/front/rule.form.php?' . $query;
+
+        echo "<div class='spaced center'>";
+        echo "<a class='vsubmit' href='" . htmlspecialchars($url, ENT_QUOTES, 'UTF-8') . "'>" .
+            __('Adicionar regra de visibilidade', 'autoassign') .
+            '</a>';
+        echo '</div>';
+    }
+
     public function getTitle()
     {
         return __('Regras para substituir a visibilidade de entidades', 'autoassign');
@@ -44,6 +69,11 @@ class PluginAutoassignRuleShowAllCollection extends RuleCollection
         }
 
         return $input;
+    }
+
+    public function showAdditionalInformationsInForm($target)
+    {
+        $this->showCreateRuleButton($target);
     }
 }
 
@@ -120,6 +150,31 @@ class PluginAutoassignRuleAssignCollection extends RuleCollection
     public $menu_option           = 'autoassign';
     public $stop_on_first_match   = false;
 
+    private function showCreateRuleButton($target)
+    {
+        global $CFG_GLPI;
+
+        if (!static::canCreate()) {
+            return;
+        }
+
+        $back = $_SERVER['REQUEST_URI'] ?? $target;
+
+        $params = [
+            'sub_type' => $this->getRuleClassName(),
+            'back'     => $back,
+        ];
+
+        $query = Toolbox::append_params($params, '&');
+        $url   = $CFG_GLPI['root_doc'] . '/front/rule.form.php?' . $query;
+
+        echo "<div class='spaced center'>";
+        echo "<a class='vsubmit' href='" . htmlspecialchars($url, ENT_QUOTES, 'UTF-8') . "'>" .
+            __('Adicionar regra de atribuição', 'autoassign') .
+            '</a>';
+        echo '</div>';
+    }
+
     public function getTitle()
     {
         return __('Regras para atribuições baseadas em tarefas', 'autoassign');
@@ -156,6 +211,11 @@ class PluginAutoassignRuleAssignCollection extends RuleCollection
         }
 
         return $input;
+    }
+
+    public function showAdditionalInformationsInForm($target)
+    {
+        $this->showCreateRuleButton($target);
     }
 }
 
