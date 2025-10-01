@@ -1,6 +1,7 @@
 <?php
 
 include '../../../inc/includes.php';
+require_once __DIR__ . '/../inc/autoassign.class.php';
 
 global $CFG_GLPI;
 
