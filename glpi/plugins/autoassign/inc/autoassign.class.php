@@ -11,7 +11,7 @@ class PluginAutoassignRuleShowAllCollection extends RuleCollection
 
     public function getTitle()
     {
-        return __('Rules for entity visibility override', 'autoassign');
+        return __('Regras para substituir a visibilidade de entidades', 'autoassign');
     }
 
     public function canList()
@@ -53,12 +53,12 @@ class PluginAutoassignRuleShowAll extends Rule
 
     public static function getTypeName($nb = 0)
     {
-        return _n('Show all rule', 'Show all rules', $nb, 'autoassign');
+        return _n('Regra para mostrar todas as entidades', 'Regras para mostrar todas as entidades', $nb, 'autoassign');
     }
 
     public function getTitle()
     {
-        return __('Rules for entity visibility override', 'autoassign');
+        return __('Regras para substituir a visibilidade de entidades', 'autoassign');
     }
 
     public function getCriterias()
@@ -101,7 +101,7 @@ class PluginAutoassignRuleShowAll extends Rule
     {
         $actions = [];
 
-        $actions['force_showall']['name']          = __('Force show all entities', 'autoassign');
+        $actions['force_showall']['name']          = __('Forçar exibição de todas as entidades', 'autoassign');
         $actions['force_showall']['type']          = 'yesonly';
         $actions['force_showall']['force_actions'] = ['assign'];
 
@@ -122,7 +122,7 @@ class PluginAutoassignRuleAssignCollection extends RuleCollection
 
     public function getTitle()
     {
-        return __('Rules for task driven assignments', 'autoassign');
+        return __('Regras para atribuições baseadas em tarefas', 'autoassign');
     }
 
     public function canList()
@@ -165,12 +165,12 @@ class PluginAutoassignRuleAssign extends Rule
 
     public static function getTypeName($nb = 0)
     {
-        return _n('Auto assignment rule', 'Auto assignment rules', $nb, 'autoassign');
+        return _n('Regra de atribuição automática', 'Regras de atribuição automática', $nb, 'autoassign');
     }
 
     public function getTitle()
     {
-        return __('Rules for task driven assignments', 'autoassign');
+        return __('Regras para atribuições baseadas em tarefas', 'autoassign');
     }
 
     public function maybeRecursive()
@@ -197,7 +197,7 @@ class PluginAutoassignRuleAssign extends Rule
             Rule::PATTERN_NOT_UNDER,
         ];
 
-        $criterias['tag']['name'] = __('Tag');
+        $criterias['tag']['name'] = __('Etiqueta', 'autoassign');
         $criterias['tag']['type'] = 'text';
 
         $criterias['type']['name']      = __('Type');
@@ -217,10 +217,10 @@ class PluginAutoassignRuleAssign extends Rule
         $criterias['requesttypes_id']['table'] = RequestType::getTable();
         $criterias['requesttypes_id']['type']  = 'dropdown';
 
-        $criterias['global_validation']['name'] = __('Approval', 'autoassign');
+        $criterias['global_validation']['name'] = __('Aprovação', 'autoassign');
         $criterias['global_validation']['type'] = 'dropdown_validation';
 
-        $criterias['priority']['name'] = __('Priority');
+        $criterias['priority']['name'] = __('Prioridade', 'autoassign');
         $criterias['priority']['type'] = 'dropdown_priority';
 
         return $criterias;
@@ -230,7 +230,7 @@ class PluginAutoassignRuleAssign extends Rule
     {
         $actions = [];
 
-        $actions['autoassign_user']['name']               = __('Auto assign user', 'autoassign');
+        $actions['autoassign_user']['name']               = __('Atribuir usuário automaticamente', 'autoassign');
         $actions['autoassign_user']['type']               = 'dropdown_users';
         $actions['autoassign_user']['table']              = User::getTable();
         $actions['autoassign_user']['force_actions']      = ['append'];
@@ -239,7 +239,7 @@ class PluginAutoassignRuleAssign extends Rule
         $actions['autoassign_user']['appendtoarray']      = [];
         $actions['autoassign_user']['appendtoarrayfield'] = 'users_id';
 
-        $actions['autoassign_group']['name']               = __('Auto assign group', 'autoassign');
+        $actions['autoassign_group']['name']               = __('Atribuir grupo automaticamente', 'autoassign');
         $actions['autoassign_group']['type']               = 'dropdown';
         $actions['autoassign_group']['table']              = Group::getTable();
         $actions['autoassign_group']['condition']          = ['is_assign' => 1];

@@ -1,7 +1,7 @@
 <?php
 
 include '../../../inc/includes.php';
-require_once __DIR__ . '/../inc/autoassign.class.php';
+require_once __DIR__ . '/../inc/autoload.php';
 
 global $CFG_GLPI;
 
@@ -12,7 +12,7 @@ if (!$plugin->isInstalled('autoassign') || !$plugin->isActivated('autoassign')) 
     Html::displayNotFoundError();
 }
 
-Html::header(__('Auto Assign & ShowAll', 'autoassign'), $_SERVER['PHP_SELF'], 'config', 'plugins', 'autoassign');
+Html::header(__('Atribuição Automática & Mostrar Tudo', 'autoassign'), $_SERVER['PHP_SELF'], 'config', 'plugins', 'autoassign');
 
 echo "<div class='spaced'>";
 
@@ -21,19 +21,19 @@ $assignUrl  = $CFG_GLPI['root_doc'] . '/plugins/autoassign/front/rule_assign.php
 
 echo "<table class='tab_cadre_fixe'>";
 
-echo "<tr><th colspan='2'>" . __('Manage rules', 'autoassign') . '</th></tr>';
+echo "<tr><th colspan='2'>" . __('Gerenciar regras', 'autoassign') . '</th></tr>';
 
 echo "<tr class='tab_bg_1'>";
 
-echo "<td><strong>" . __('Entity visibility rules', 'autoassign') . "</strong><br>";
+echo "<td><strong>" . __('Regras de visibilidade de entidades', 'autoassign') . "</strong><br>";
 
-echo __('Configure which users, groups, profiles or entities should automatically see every entity on login.', 'autoassign');
+echo __('Configurar quais usuários, grupos, perfis ou entidades devem visualizar automaticamente todas as entidades ao fazer login.', 'autoassign');
 
 echo '</td>';
 
 echo "<td class='center'>";
 
-echo "<a class='vsubmit' href='{$showallUrl}'>" . __('Open rules', 'autoassign') . '</a>';
+echo "<a class='vsubmit' href='{$showallUrl}'>" . __('Abrir regras', 'autoassign') . '</a>';
 
 echo '</td>';
 
@@ -41,15 +41,15 @@ echo '</tr>';
 
 echo "<tr class='tab_bg_1'>";
 
-echo "<td><strong>" . __('Task based ticket assignments', 'autoassign') . "</strong><br>";
+echo "<td><strong>" . __('Atribuições de chamados baseadas em tarefas', 'autoassign') . "</strong><br>";
 
-echo __('Define criteria to automatically assign technicians or groups to tickets when they are added to tasks.', 'autoassign');
+echo __('Defina critérios para atribuir automaticamente técnicos ou grupos aos chamados quando forem adicionados às tarefas.', 'autoassign');
 
 echo '</td>';
 
 echo "<td class='center'>";
 
-echo "<a class='vsubmit' href='{$assignUrl}'>" . __('Open rules', 'autoassign') . '</a>';
+echo "<a class='vsubmit' href='{$assignUrl}'>" . __('Abrir regras', 'autoassign') . '</a>';
 
 echo '</td>';
 
