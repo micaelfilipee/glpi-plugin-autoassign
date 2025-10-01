@@ -35,6 +35,72 @@ class PluginAutoassignConfig extends CommonDBTM
         return $this->sanitizeInput($input);
     }
 
+    public function rawSearchOptions()
+    {
+        $tab = [];
+
+        $tab[] = [
+            'id'   => 'common',
+            'name' => __('Characteristics'),
+        ];
+
+        $tab[] = [
+            'id'            => 1,
+            'table'         => self::$table,
+            'field'         => 'id',
+            'name'          => __('ID'),
+            'datatype'      => 'number',
+            'massiveaction' => false,
+        ];
+
+        $tab[] = [
+            'id'            => 2,
+            'table'         => self::$table,
+            'field'         => 'profiles_id',
+            'name'          => __('Profile'),
+            'datatype'      => 'dropdown',
+            'massiveaction' => false,
+        ];
+
+        $tab[] = [
+            'id'            => 3,
+            'table'         => self::$table,
+            'field'         => 'groups_id',
+            'name'          => __('Group'),
+            'datatype'      => 'dropdown',
+            'massiveaction' => false,
+        ];
+
+        $tab[] = [
+            'id'            => 4,
+            'table'         => self::$table,
+            'field'         => 'entities_id',
+            'name'          => __('Entity'),
+            'datatype'      => 'dropdown',
+            'massiveaction' => false,
+        ];
+
+        $tab[] = [
+            'id'            => 5,
+            'table'         => self::$table,
+            'field'         => 'force_showall',
+            'name'          => __('Force show all entities', 'autoassign'),
+            'datatype'      => 'bool',
+            'massiveaction' => false,
+        ];
+
+        $tab[] = [
+            'id'            => 6,
+            'table'         => self::$table,
+            'field'         => 'autoassign_task',
+            'name'          => __('Auto assign task technician', 'autoassign'),
+            'datatype'      => 'bool',
+            'massiveaction' => false,
+        ];
+
+        return $tab;
+    }
+
     private function sanitizeInput(array $input)
     {
         foreach (['profiles_id', 'groups_id', 'entities_id'] as $field) {
@@ -85,6 +151,11 @@ class PluginAutoassignConfig extends CommonDBTM
     public static function canPurge()
     {
         return Session::haveRight(self::$rightname, UPDATE);
+    }
+
+    public function getSpecificMassiveActions($checkitem = null)
+    {
+        return [];
     }
 
     public function showForm($ID, array $options = [])
