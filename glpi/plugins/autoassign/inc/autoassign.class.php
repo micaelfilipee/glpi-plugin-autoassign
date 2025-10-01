@@ -35,7 +35,7 @@ class PluginAutoassignConfig extends CommonDBTM
         return $this->sanitizeInput($input);
     }
 
-    public static function rawSearchOptions()
+    public function rawSearchOptions()
     {
         $tab = [];
 
