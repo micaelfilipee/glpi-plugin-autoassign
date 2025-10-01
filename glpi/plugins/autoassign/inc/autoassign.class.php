@@ -62,12 +62,41 @@ class PluginAutoassignConfig extends CommonDBTM
         return $input;
     }
 
+    public static function canView()
+    {
+        return Session::haveRight(self::$rightname, READ);
+    }
+
+    public static function canCreate()
+    {
+        return Session::haveRight(self::$rightname, UPDATE);
+    }
+
+    public static function canUpdate()
+    {
+        return Session::haveRight(self::$rightname, UPDATE);
+    }
+
+    public static function canDelete()
+    {
+        return Session::haveRight(self::$rightname, UPDATE);
+    }
+
+    public static function canPurge()
+    {
+        return Session::haveRight(self::$rightname, UPDATE);
+    }
+
     public function showForm($ID, array $options = [])
     {
         if ($ID > 0) {
             $this->check($ID, READ);
         } else {
-            $this->check(-1, CREATE);
+            $this->getEmpty();
+
+            if (!self::canCreate()) {
+                Html::displayRightError();
+            }
         }
 
         $this->initForm($ID, $options);
