@@ -1,7 +1,7 @@
 <?php
 
 include '../../../inc/includes.php';
-require_once __DIR__ . '/../inc/autoassign.class.php';
+require_once __DIR__ . '/../inc/autoload.php';
 
 Session::checkRight('config', READ);
 

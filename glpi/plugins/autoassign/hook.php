@@ -4,7 +4,7 @@ if (!defined('GLPI_ROOT')) {
     die("Sorry. You can't access directly to this file");
 }
 
-require_once __DIR__ . '/inc/autoassign.class.php';
+require_once __DIR__ . '/inc/autoload.php';
 
 function plugin_autoassign_force_showall($params = [])
 {

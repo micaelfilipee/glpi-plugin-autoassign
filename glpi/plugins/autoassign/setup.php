@@ -4,6 +4,8 @@ if (!defined('GLPI_ROOT')) {
     die("Sorry. You can't access directly to this file");
 }
 
+require_once __DIR__ . '/inc/autoload.php';
+
 define('PLUGIN_AUTOASSIGN_VERSION', '2.0.0');
 
 define('PLUGIN_AUTOASSIGN_LEGACY_TABLE', 'glpi_plugin_autoassign_configs');
@@ -11,7 +13,7 @@ define('PLUGIN_AUTOASSIGN_LEGACY_TABLE', 'glpi_plugin_autoassign_configs');
 function plugin_version_autoassign()
 {
     return [
-        'name'           => __('Auto Assign & ShowAll', 'autoassign'),
+        'name'           => __('Atribuição Automática & Mostrar Tudo', 'autoassign'),
         'version'        => PLUGIN_AUTOASSIGN_VERSION,
         'author'         => 'Autoassign Plugin Generator',
         'license'        => 'GPLv2+',
@@ -24,7 +26,7 @@ function plugin_autoassign_check_prerequisites()
 {
     if (version_compare(GLPI_VERSION, '9.5.5', '<')) {
         Session::addMessageAfterRedirect(
-            __('This plugin requires GLPI 9.5.5 or higher.', 'autoassign'),
+            __('Este plugin requer GLPI 9.5.5 ou superior.', 'autoassign'),
             false,
             ERROR
         );
@@ -37,7 +39,7 @@ function plugin_autoassign_check_prerequisites()
 function plugin_autoassign_check_config($verbose = false)
 {
     if ($verbose) {
-        echo __('Installed / not configured', 'autoassign');
+        echo __('Instalado / não configurado', 'autoassign');
     }
     return true;
 }
