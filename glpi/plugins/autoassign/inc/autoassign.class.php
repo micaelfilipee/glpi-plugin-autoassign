@@ -8,7 +8,7 @@ class PluginAutoassignConfig extends CommonDBTM
 {
     public static $rightname = 'config';
 
-    protected $table = 'glpi_plugin_autoassign_config';
+    public static $table = 'glpi_plugin_autoassign_configs';
 
     public static function getTypeName($nb = 0)
     {

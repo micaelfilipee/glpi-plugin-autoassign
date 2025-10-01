@@ -75,7 +75,7 @@ function plugin_autoassign_user_matches_rule($userID, $flagField)
     }
 
     $iterator = $DB->request([
-        'FROM'  => 'glpi_plugin_autoassign_config',
+        'FROM'  => 'glpi_plugin_autoassign_configs',
         'WHERE' => [
             $flagField => 1,
         ],

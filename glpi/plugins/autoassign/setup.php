@@ -5,6 +5,7 @@ if (!defined('GLPI_ROOT')) {
 }
 
 define('PLUGIN_AUTOASSIGN_VERSION', '1.0.0');
+define('PLUGIN_AUTOASSIGN_TABLE', 'glpi_plugin_autoassign_configs');
 
 function plugin_version_autoassign()
 {
@@ -56,7 +57,7 @@ function plugin_autoassign_install()
 {
     global $DB;
 
-    $table = 'glpi_plugin_autoassign_config';
+    $table = PLUGIN_AUTOASSIGN_TABLE;
 
     if (!$DB->tableExists($table)) {
         $query = "CREATE TABLE `{$table}` (
@@ -79,7 +80,7 @@ function plugin_autoassign_uninstall()
 {
     global $DB;
 
-    $table = 'glpi_plugin_autoassign_config';
+    $table = PLUGIN_AUTOASSIGN_TABLE;
 
     if ($DB->tableExists($table)) {
         $DB->query("DROP TABLE `{$table}`");
